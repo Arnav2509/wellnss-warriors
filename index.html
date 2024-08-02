@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellness Warriors</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* Light gray background color */
+        }
+        header {
+            background-color: #000000;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: relative; /* Ensure header is relative */
+            z-index: 2; /* Ensure header is above other elements */
+        }
+        .background-image {
+            background: url('https://img.freepik.com/premium-photo/cute-cartoon-food-pattern-purple-background_14117-809881.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1722470400&semt=ais_hybrid') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 200px; /* Adjust to start below the header */
+        }
+        nav {
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            top: 130px; /* Adjust to position below header */
+            z-index: 2; /* Ensure navigation is above background image */
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ddd;
+        }
+        .content {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: center;
+            position: relative;
+            top: -250px; /* Adjust as needed */
+            left: 0px; /* Adjust to move the box to the right */
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nav-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            background-color: #28a745; /* Green background color */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-button:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+
+        /* Pop-up box styles */
+        .popup {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .popup img {
+            max-width: 200px; /* Adjust the maximum width as per your requirement */
+            height: auto;
+            margin-top: 10px;
+        }
+
+        .large-popup {
+            max-width: 80%;
+            height: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .popup-buttons {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .popup-button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .popup-button:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Wellness Warriors</h1>
+    </header>
+    <div class="background-image">
+        <nav>
+            <a href="#redirects">Home</a>
+            <a href="#" id="about-us-link">About Us</a>
+            <a href="#" id="contact-us-link">Contact Us</a>
+            <a href="#" id="feedback-link">Feedback</a>
+        </nav>
+        <div class="content" id="redirects">
+            <h2>Navigation Redirects</h2>
+            <a href="#" class="nav-button" id="home-link">Home</a>
+            <a href="#" class="nav-button" id="products-link">Harmful Products Used in Daily Life</a>
+            <a href="#" class="nav-button" id="diseases-link">Diseases caused</a>
+            <a href="#" class="nav-button" id="alternatives-link">Alternatives</a>
+        </div>
+    </div>
+
+    <!-- Pop-up box for About Us -->
+    <div class="popup" id="popup-about-us">
+        <p>Welcome to our About Us section!</p>
+        <img src="https://kidseats.ca/wp-content/uploads/2022/09/hello-2-kidseats.png" alt="Placeholder image">
+    </div>
+
+    <!-- Pop-up box for Contact Us -->
+    <div class="popup" id="popup-contact-us">
+        <p>Contact Us for any inquiries!</p>
+        <img src="https://png.pngtree.com/png-clipart/20221024/original/pngtree-hand-holding-mobile-phone-with-text-messages-flat-vector-illustration-png-image_8716801.png" alt="Contact Us Image">
+    </div>
+
+    <!-- Large pop-up box for Home -->
+    <div class="popup large-popup" id="popup-home">
+        <div>
+            <h2>Welcome to Home!</h2>
+            <p>This is a website designed to teach us about unhealthy foods and shows how they can harm our health, leading to problems like obesity and diabetes. It explains which foods are bad, what they do to our bodies, and suggests healthier options to help us make better choices and stay healthy.</p>
+        </div>
+        <div class="popup-buttons">
+            <button class="popup-button" id="close-popup-home">Close</button>
+            <!-- You can add a link to redirect to a specific page here -->
+        </div>
+    </div>
+
+    <!-- Large pop-up box for Harmful Products Used in Daily Life -->
+    <div class="popup large-popup" id="popup-products">
+        <div>
+            <h2>Harmful Products Used in Daily Life</h2>
+            <p>Details about harmful products...</p>
+            <img src="https://imgnew.outlookindia.com/public/uploads/articles/2021/6/15/coke.jpg" alt="Placeholder image">
+        </div>
+        <div class="popup-buttons">
+            <button class="popup-button" id="close-popup-products">Close</button>
+            <a href="used10.html" class="popup-button">Learn More</a>
+        </div>
+    </div>
+
+    <!-- Large pop-up box for Diseases caused -->
+    <div class="popup large-popup" id="popup-diseases">
+        <div>
+            <h2>Diseases caused</h2>
+            <p>Details about diseases caused by harmful products...</p>
+            <img src="https://thumbs.dreamstime.com/z/big-fat-pineapple-standing-electronic-scales-weight-body-shock-healthcare-concept-cartoon-healthy-character-flat-vector-196701787.jpg" alt="Placeholder image">
+        </div>
+        <div class="popup-buttons">
+            <button class="popup-button" id="close-popup-diseases">Close</button>
+            <a href="diseases.html" class="popup-button">Learn More</a>
+        </div>
+    </div>
+
+    <!-- Large pop-up box for Alternatives -->
+    <div class="popup large-popup" id="popup-alternatives">
+        <div>
+            <h2>Alternatives</h2>
+            <p>Details about alternatives to harmful products...</p>
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/038/109/003/small_2x/health-or-junk-food-isometeric-vector.jpg" alt="Placeholder image">
+        </div>
+        <div class="popup-buttons">
+            <button class="popup-button" id="close-popup-alternatives">Close</button>
+            <a href="alternatives.html" class="popup-button">Learn More</a>
+        </div>
+    </div>
+
+    <!-- Pop-up box for Feedback -->
+    <div class="popup large-popup" id="popup-feedback">
+        <div>
+            <h2>Feedback</h2>
+            <p>We value your feedback! Please fill out the form below:</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScmh0kEsOQDsvdsPjUi6PglngLwJtS_-SrIJsoPAJWL91p0NQ/viewform?usp=sf_link" target="_blank" class="popup-button">Go to Feedback Form</a>
+        </div>
+        <div class="popup-buttons">
+            <button class="popup-button" id="close-popup-feedback">Close</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('about-us-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            var popup = document.getElementById('popup-about-us');
+            popup.style.display = 'block';
+        });
+
+        document.getElementById('contact-us-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            var popup = document.getElementById('popup-contact-us');
+            popup.style.display = 'block';
+        });
+
+        document.getElementById('home-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            var popup = document.getElementById('popup-home');
+            popup.style.display = 'block';
+        });
+
+        document.getElementById('products-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            var popup = document.getElementById('popup-products');
+            popup.style.display = 'block';
+        });
+
+        document.getElementById('diseases-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            var popup = document.getElementById('popup-diseases');
+            popup.style.display = 'block';
+        });
+
+        document.getElementById('alternatives-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            var popup = document.getElementById('popup-alternatives');
+            popup.style.display = 'block';
+        });
+
+        document.getElementById('feedback-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            var popup = document.getElementById('popup-feedback');
+            popup.style.display = 'block';
+        });
+
+        document.getElementById('close-popup-home').addEventListener('click', function() {
+            var popup = document.getElementById('popup-home');
+            popup.style.display = 'none';
+        });
+
+        document.getElementById('close-popup-products').addEventListener('click', function() {
+            var popup = document.getElementById('popup-products');
+            popup.style.display = 'none';
+        });
+
+        document.getElementById('close-popup-diseases').addEventListener('click', function() {
+            var popup = document.getElementById('popup-diseases');
+            popup.style.display = 'none';
+        });
+
+        document.getElementById('close-popup-alternatives').addEventListener('click', function() {
+            var popup = document.getElementById('popup-alternatives');
+            popup.style.display = 'none';
+        });
+
+        document.getElementById('close-popup-feedback').addEventListener('click', function() {
+            var popup = document.getElementById('popup-feedback');
+            popup.style.display = 'none';
+        });
+
+        document.addEventListener('click', function(event) {
+            var popupAboutUs = document.getElementById('popup-about-us');
+            var popupContactUs = document.getElementById('popup-contact-us');
+            var popupHome = document.getElementById('popup-home');
+            var popupProducts = document.getElementById('popup-products');
+            var popupDiseases = document.getElementById('popup-diseases');
+            var popupAlternatives = document.getElementById('popup-alternatives');
+            var popupFeedback = document.getElementById('popup-feedback');
+
+            if (!popupAboutUs.contains(event.target) && event.target.id !== 'about-us-link') {
+                popupAboutUs.style.display = 'none';
+            }
+
+            if (!popupContactUs.contains(event.target) && event.target.id !== 'contact-us-link') {
+                popupContactUs.style.display = 'none';
+            }
+
+            if (!popupHome.contains(event.target) && event.target.id !== 'home-link') {
+                popupHome.style.display = 'none';
+            }
+
+            if (!popupProducts.contains(event.target) && event.target.id !== 'products-link' && event.target.id !== 'close-popup-products') {
+                popupProducts.style.display = 'none';
+            }
+
+            if (!popupDiseases.contains(event.target) && event.target.id !== 'diseases-link' && event.target.id !== 'close-popup-diseases') {
+                popupDiseases.style.display = 'none';
+            }
+
+            if (!popupAlternatives.contains(event.target) && event.target.id !== 'alternatives-link' && event.target.id !== 'close-popup-alternatives') {
+                popupAlternatives.style.display = 'none';
+            }
+
+            if (!popupFeedback.contains(event.target) && event.target.id !== 'feedback-link' && event.target.id !== 'close-popup-feedback') {
+                popupFeedback.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
